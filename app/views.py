@@ -7,6 +7,7 @@ This file creates your application.
 
 from app import app
 from flask import render_template, request, redirect, url_for
+import time
 
 
 ###
@@ -24,6 +25,15 @@ def about():
     """Render the website's about page."""
     return render_template('about.html', name="Mary Jane")
 
+def timeinfo():
+  dtime = time.strftime("%a, %d %b %Y")
+  return dtime 
+
+@app.route('/profile')
+def profile():
+    """Render website's profile page."""
+    return render_template('profile.html',dtime = timeinfo())
+  
 
 ###
 # The functions below should be applicable to all Flask apps.
